@@ -1,0 +1,36 @@
+app = "bywa-evo"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  SERVER_URL = "https://bywa-evo.fly.dev"
+  AUTHENTICATION_API_KEY = "ganti-dengan-api-key-anda"
+  DATABASE_ENABLED = "true"
+  DATABASE_PROVIDER = "postgresql"
+  DATABASE_SAVE_DATA_INSTANCE = "true"
+  DATABASE_SAVE_DATA_NEW_MESSAGE = "true"
+  DATABASE_SAVE_MESSAGE_UPDATE = "true"
+  DATABASE_SAVE_DATA_CONTACTS = "true"
+  DATABASE_SAVE_DATA_CHATS = "true"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[http_service.checks]]
+  grace_period = "10s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/health"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
