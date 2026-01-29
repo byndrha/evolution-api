@@ -22,7 +22,7 @@ primary_region = 'iad'
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = false
   auto_start_machines = true
   min_machines_running = 0
 
@@ -30,6 +30,13 @@ primary_region = 'iad'
     type = 'requests'
     hard_limit = 250
     soft_limit = 200
+
+[[http_service.checks]]
+  grace_period = "120s"
+  interval = "30s"
+  method = "get"
+  path = "/"
+  timeout = "5s"
 
 [[vm]]
   memory = '2gb'
