@@ -7,7 +7,7 @@ app = 'bywa-evo'
 primary_region = 'iad'
 
 [build]
-  image = 'atendai/evolution-api:latest'
+  image = 'atendai/evolution-api:v2.2.3'
 
 [env]
   DATABASE_CONNECTION_URI = 'postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres'
