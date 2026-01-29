@@ -10,9 +10,12 @@ primary_region = "iad"
   image = "atendai/evolution-api:latest"
 
 [env]
-  PORT = "8080"
+  DATABASE_URL = "postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres"
+  DATABASE_CONNECTION_URI = "postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres"
   SERVER_URL = "0.0.0.0"
+  PORT = "8080"
   DETERMINE_IP_ADDRESS = "false"
+  
 
 [http_service]
   internal_port = 8080
