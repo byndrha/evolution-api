@@ -15,7 +15,6 @@ primary_region = "iad"
   SERVER_URL = "0.0.0.0"
   PORT = "8080"
   DETERMINE_IP_ADDRESS = "false"
-  
 
 [http_service]
   internal_port = 8080
@@ -27,6 +26,11 @@ primary_region = "iad"
     type = "requests"
     hard_limit = 250
     soft_limit = 200
+
+
+[experimental]
+  # TRICK: Kita hapus file .env bawaan SEBELUM menjalankan migrasi & aplikasi
+  cmd = ["/bin/bash", "-c", "rm -f .env && npx prisma migrate deploy --schema ./prisma/postgresql-schema.prisma && npm run start:prod"]
 
 [[vm]]
   cpu_kind = "shared"
