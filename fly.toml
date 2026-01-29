@@ -1,20 +1,20 @@
-# fly.toml app configuration file generated for bywa-evo on 2026-01-26T01:39:18Z
+# fly.toml app configuration file generated for bywa-evo on 2026-01-29T19:09:05+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "bywa-evo"
-primary_region = "iad"
+app = 'bywa-evo'
+primary_region = 'iad'
 
 [build]
-  image = "atendai/evolution-api:latest"
+  image = 'atendai/evolution-api:latest'
 
 [env]
-  DATABASE_URL = "postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres"
-  DATABASE_CONNECTION_URI = "postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres"
-  SERVER_URL = "0.0.0.0"
-  PORT = "8080"
-  DETERMINE_IP_ADDRESS = "false"
+  DATABASE_CONNECTION_URI = 'postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres'
+  DATABASE_URL = 'postgresql://postgres:bywaEvo8899@db.zltjyjtpfsubvybvzftn.supabase.co:5432/postgres'
+  DETERMINE_IP_ADDRESS = 'false'
+  PORT = '8080'
+  SERVER_URL = '0.0.0.0'
 
 [http_service]
   internal_port = 8080
@@ -22,17 +22,13 @@ primary_region = "iad"
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
+
   [http_service.concurrency]
-    type = "requests"
+    type = 'requests'
     hard_limit = 250
     soft_limit = 200
 
-
-[experimental]
-  # TRICK: Kita hapus file .env bawaan SEBELUM menjalankan migrasi & aplikasi
-  cmd = ["/bin/bash", "-c", "rm -f .env && npx prisma migrate deploy --schema ./prisma/postgresql-schema.prisma && npm run start:prod"]
-
 [[vm]]
-  cpu_kind = "shared"
+  memory = '2gb'
   cpus = 2
   memory_mb = 2048
